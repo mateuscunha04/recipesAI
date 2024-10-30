@@ -1,21 +1,28 @@
 import os
 from groq import Groq
 
+def space():
+    print("\n")
+
 os.environ["GROQ_API_KEY"] = "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"
 
 client = Groq(api_key = os.environ.get("GROQ_API_KEY"),)
 
 messages = []
-usuario = "Escreva uma receita (de uma forma breve que seja composta pelo nome, ingredientes e modo de preparo) que contenha apenas os seguintes ingredientes: "
+usuario = "Escreva uma receita (de uma forma breve que seja composta pelo nome, ingredientes e modo de preparo), utilizando a linha mais recente e contendo apenas os seguintes ingredientes: "
 
 while True:
-    usuario += input("Liste alguns ingredientes para obter uma receita completa ou 'sair' para cancelar: ")
+    space()
+    text = input("Liste alguns ingredientes para obter uma receita completa ou 'sair' para cancelar: ")
+    usuario += text
 
-    if usuario.lower() == 'sair':
+    if text == "sair":
+        space()
         print("Você fechou o programa.")
         break
 
     messages.append({"role": "user", "content": usuario})
+    space()
 
     chat_completion = client.chat.completions.create(
         messages = messages,
