@@ -4,7 +4,7 @@ from groq import Groq
 def space():
     print("\n")
 
-os.environ["GROQ_API_KEY"] = "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"
+os.environ["GROQ_API_KEY"] = "Insira a sua própria chave API"
 
 client = Groq(api_key = os.environ.get("GROQ_API_KEY"),)
 
